@@ -1,0 +1,19 @@
+CREATE TABLE inventory (id INTEGER PRIMARY KEY, item TEXT, size TEXT, price INTEGER, quantity INTEGER);
+
+INSERT INTO inventory VALUES (1, "Snake Plant", "S", 10, 2);
+INSERT INTO inventory VALUES (2, "Snake Plant", "M", 20, 2);
+INSERT INTO inventory VALUES (3, "Snake Plant", "L", 25, 1);
+INSERT INTO inventory VALUES (4, "ZZ Plant", "S", 5, 6);
+INSERT INTO inventory VALUES (5, "ZZ Plant", "M", 10, 1);
+INSERT INTO inventory VALUES (6, "ZZ Plant", "L", 25, 4);
+INSERT INTO inventory VALUES (7, "Spider Plant", "S", 10, 3);
+INSERT INTO inventory VALUES (8, "Spider Plant", "L", 20, 1);
+INSERT INTO inventory VALUES (9, "Peace Lily", "S", 15, 11);
+INSERT INTO inventory VALUES (10, "Cactus", "S", 7, 9);
+INSERT INTO inventory VALUES (11, "Monstera", "L", 75, 2);
+INSERT INTO inventory VALUES (12, "Pothos", "S", 10, 6);
+INSERT INTO inventory VALUES (13, "Pothos", "M", 16, 2);
+INSERT INTO inventory VALUES (14, "Fern", "M", 22, 2);
+INSERT INTO inventory VALUES (15, "Orchid", "M", 15, 13);
+
+SELECT * FROM inventory ORDER BY price;
