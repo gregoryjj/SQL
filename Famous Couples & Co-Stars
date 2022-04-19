@@ -1,0 +1,48 @@
+CREATE TABLE celebrities (id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT,
+    networth INTEGER);
+
+INSERT INTO celebrities (name, networth) VALUES ("Will Smith", "350000000");
+INSERT INTO celebrities (name, networth) VALUES ("Jaida Pinkett Smith", "50000000");
+INSERT INTO celebrities (name, networth) VALUES ("Blake Lively", "30000000");
+INSERT INTO celebrities (name, networth) VALUES ("Ryan Reynolds", "150000000");
+INSERT INTO celebrities (name, networth) VALUES ("Margot Robbie", "26000000");
+
+CREATE TABLE movies (id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT,
+    release_date INTEGER,
+    costar1_id INTEGER,
+    costar2_id INTEGER);
+    
+INSERT INTO movies (name, release_date, costar1_id, costar2_id) VALUES ("Focus", 2015, 1, 5);
+INSERT INTO movies (name, release_date, costar1_id, costar2_id) VALUES ("Green Lantern", 2011, 4, 3);
+INSERT INTO movies (name, release_date, costar1_id, costar2_id) VALUES ("Men In Black 3", 2012, 1, 2);
+
+CREATE TABLE spouses (id INTEGER PRIMARY KEY AUTOINCREMENT,
+    spouse1_id INTEGER,
+    spouse2_id INTEGER);
+
+INSERT INTO spouses (spouse1_id, spouse2_id) VALUES (1,2);
+INSERT INTO spouses (spouse1_id, spouse2_id) VALUES (3,4);
+
+SELECT * FROM celebrities;
+SELECT * FROM movies;
+    
+SELECT movies.name as "Title", a.name as "Starring", b.name as "Co-Starring" FROM movies
+    JOIN celebrities a
+    ON costar1_id = a.id
+    JOIN celebrities b
+    ON costar2_id = b.id;
+    
+SELECT a.name as "Spouse 1", b.name as "Spouse 2", (a.networth + b.networth) as "Couple Net Worth" FROM spouses
+    JOIN celebrities a
+    ON spouse1_id = a.id
+    JOIN celebrities b
+    ON spouse2_id = b.id;
+
+SELECT movies.name, a.name as "Star", b.name as "Co-Star", (a.networth + b.networth) as "Total Costar Worth" FROM movies
+    JOIN celebrities a
+    ON costar1_id = a.id
+    JOIN celebrities b
+    ON costar2_id = b.id
+    ORDER BY "total costar worth" ASC;
